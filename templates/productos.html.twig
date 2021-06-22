@@ -1,0 +1,47 @@
+{# templates/productos.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}{{nombre}}{% endblock %}
+{% block contenido %}
+	<h1 id="titulo" class="display-4">Categoría de <b>{{ nombre }}</b></h1>
+    <table class="table table-hover text-center mt-4">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Nombre</th>
+				<th>Descripción</th>
+				<th>Stock</th>
+				<th>Peso</th>
+				<th>Comprar</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for prod in productos %}
+				<tr>
+					<td>
+						<img src="{{ asset(prod.urlimg) }}" width=100 height=100>
+					</td>
+					<td>{{ prod.nombre }}</td>
+					<td>{{ prod.descripcion }}</td>
+					<td>{{ prod.stock }}</td>
+					<td>{{ prod.peso }}</td>
+					<td>
+						<form class="form-inline justify-content-center" action={{path('anadir')}} method='POST'>
+							<input class="form-control mr-2" name='unidades' type='number' min='1' value='1'>
+							<input name='codCat' type="hidden" value={{codCat}}>
+							<input name='cod' type='hidden' value={{prod.codProd}}>
+							<input name='stock' type='hidden' value={{prod.stock}}>
+							<input class="btn btn-success" type='submit' value='Añadir'>
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+    </table>
+	{% if prodOut %}
+		<div class="alert alert-danger" role="alert">
+  			Has añadido más unidades de las existentes de <b>{{ prodOut.nombre }}</b>.
+		</div>
+	{% endif %}
+{% endblock %}
+
+ 

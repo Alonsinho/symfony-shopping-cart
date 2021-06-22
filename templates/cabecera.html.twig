@@ -1,0 +1,25 @@
+<header>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="">
+			<img src="{{ asset('images/logo_peque.png') }}" width=60 height=60>
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('categorias') }}">Categorías</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('carrito') }}">Ver Carrito</a>
+				</li>
+			</ul>
+			<div class="form-inline my-2 my-lg-0">
+				<span id="cab_usuario" class="mr-4" >{{ app.user.correo }}</span>
+				<a class="btn btn-outline-danger nav-link" href="{{ path('logout') }}">Cerrar sesión</a>
+			</div>
+		</div>
+	</nav>
+</header>
